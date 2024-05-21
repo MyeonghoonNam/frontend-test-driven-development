@@ -2,7 +2,7 @@ function TextField() {
   return (
     <>
       <h1>TextField</h1>
-      <input type="text" placeholder="ÅØ½ºÆ® ÇÊµå..." />
+      <input type="text" placeholder="í…ìŠ¤íŠ¸" />
     </>
   );
 }
