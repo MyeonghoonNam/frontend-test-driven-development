@@ -6,6 +6,6 @@ export default {
 };
 
 export const Default = {
-  name: 'TextField',
+  name: 'Basic',
   render: () => <TextField />,
 };
