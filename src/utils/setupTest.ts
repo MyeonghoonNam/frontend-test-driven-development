@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { afterAll, afterEach, vi } from 'vitest';
+import { afterAll, afterEach } from 'vitest';
 
 afterEach(() => {
   vi.clearAllMocks();
