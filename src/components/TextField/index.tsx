@@ -17,7 +17,7 @@ const focusedStyle = {
 };
 
 /**
- * placeholder 설정
+ * placeholder 설정 - 테스트 작성 완료
  * className에 따른 css class 설정 - 테스트 작성 완료
  * 텍스트를 입력할 때마다 onChange 핸들러 호출
  * focus 시 border 스타일 변경
@@ -52,7 +52,7 @@ function TextField({
       type="text"
       value={value}
       className={cn('text-input', className)}
-      placeholder={placeholder || '텍스트를 입력해 주세요'}
+      placeholder={placeholder || '텍스트를 입력해 주세요.'}
       onChange={handleChange}
       onFocus={handleFocus}
       onBlur={handleBlur}
