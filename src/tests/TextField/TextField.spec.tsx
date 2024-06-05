@@ -24,26 +24,28 @@ it('className prop으로 설정한 css class가 적용된다.', async () => {
   expect(screen.getByPlaceholderText(placeholder)).toHaveClass(className);
 });
 
-it('기본 placeholder "텍스트를 입력해 주세요."가 노출된다.', async () => {
-  // Arrange
+describe('placeholder', () => {
   const placeholder = '텍스트를 입력해 주세요.';
 
-  await render(<TextField />);
+  it('기본 placeholder "텍스트를 입력해 주세요."가 노출된다.', async () => {
+    // Arrange
+    await render(<TextField />);
 
-  const textInput = screen.getByPlaceholderText(placeholder);
+    const textInput = screen.getByPlaceholderText(placeholder);
 
-  // Assert
-  expect(textInput).toBeInTheDocument();
-});
+    // Assert
+    expect(textInput).toBeInTheDocument();
+  });
 
-it('placeholder prop에 따라 placeholder가 변경된다.', async () => {
-  const placeholder = '변경된 placeholder...';
+  it('placeholder prop에 따라 placeholder가 변경된다.', async () => {
+    const newPlaceholder = '변경된 placeholder...';
 
-  // Arrange
-  await render(<TextField placeholder={placeholder} />);
+    // Arrange
+    await render(<TextField placeholder={newPlaceholder} />);
 
-  const texxtInput = screen.getByPlaceholderText(placeholder);
+    const texxtInput = screen.getByPlaceholderText(newPlaceholder);
 
-  // Act
-  expect(texxtInput).toBeInTheDocument();
+    // Act
+    expect(texxtInput).toBeInTheDocument();
+  });
 });
