@@ -19,7 +19,7 @@ const focusedStyle = {
 /**
  * placeholder 설정 - 테스트 작성 완료
  * className에 따른 css class 설정 - 테스트 작성 완료
- * 텍스트를 입력할 때마다 onChange 핸들러 호출
+ * 텍스트를 입력할 때마다 onChange 핸들러 호출 - 테스트 작성 완료
  * focus 시 border 스타일 변경
  * focus 시 onFocus 핸들러 호출
  * Enter 키 입력 시 onEnter 핸들러 호출

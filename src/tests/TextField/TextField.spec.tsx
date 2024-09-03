@@ -17,7 +17,6 @@ it('className prop으로 설정한 css class가 적용된다.', async () => {
 
   // Act
   // 렌더링에 대한 검증이기에 생략
-  // 렌더링 후 DOM에 해당 class가 존재하는지 검증
 
   // Assert - 올바른 동작이 실행되었는지 검증
   // 렌더링 후 DOM에 해당 class가 존재하는지 검증
@@ -48,4 +47,14 @@ describe('placeholder', () => {
     // Act
     expect(texxtInput).toBeInTheDocument();
   });
+});
+
+it('텍스트를 입력하면 onChange prop으로 등록한 함수가 호출된다.', async () => {
+  const spy = vi.fn();
+  const { user } = await render(<TextField onChange={spy} />);
+  const textInput = screen.getByPlaceholderText('텍스트를 입력해 주세요.');
+
+  await user.type(textInput, 'text');
+
+  expect(spy).toHaveBeenCalled();
 });
