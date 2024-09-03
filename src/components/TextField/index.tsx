@@ -8,6 +8,7 @@ interface TextFieldProps {
   placeholder?: string;
   onFocus?: () => void;
   onChange?: () => void;
+  onEnter?: () => void;
 }
 
 const focusedStyle = {
@@ -17,9 +18,9 @@ const focusedStyle = {
 };
 
 /**
- * placeholder 설정 - 테스트 작성 완료
- * className에 따른 css class 설정 - 테스트 작성 완료
- * 텍스트를 입력할 때마다 onChange 핸들러 호출 - 테스트 작성 완료
+ * placeholder 설정
+ * className에 따른 css class 설정
+ * 텍스트를 입력할 때마다 onChange 핸들러 호출
  * focus 시 border 스타일 변경
  * focus 시 onFocus 핸들러 호출
  * Enter 키 입력 시 onEnter 핸들러 호출
@@ -29,6 +30,7 @@ function TextField({
   placeholder,
   onFocus,
   onChange,
+  onEnter,
 }: TextFieldProps) {
   const [value, setValue] = useState('');
   const [isFocused, setIsFocused] = useState(false);
@@ -36,6 +38,13 @@ function TextField({
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
     onChange?.();
+  };
+
+  const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && !e.nativeEvent.isComposing) {
+      e.preventDefault();
+      onEnter?.();
+    }
   };
 
   const handleFocus = () => {
@@ -56,6 +65,7 @@ function TextField({
       onChange={handleChange}
       onFocus={handleFocus}
       onBlur={handleBlur}
+      onKeyDown={handleEnter}
       {...(isFocused && { style: focusedStyle })}
     />
   );

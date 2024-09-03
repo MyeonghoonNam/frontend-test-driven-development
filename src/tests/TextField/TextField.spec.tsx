@@ -58,3 +58,35 @@ it('텍스트를 입력하면 onChange prop으로 등록한 함수가 호출된�
 
   expect(spy).toHaveBeenCalled();
 });
+
+it('엔터키를 입력하면 onEnter prop으로 등록한 함수가 호출된다.', async () => {
+  const spy = vi.fn();
+  const { user } = await render(<TextField onEnter={spy} />);
+  const textInput = screen.getByPlaceholderText('텍스트를 입력해 주세요.');
+
+  await user.type(textInput, 'change placeholder...{Enter}');
+
+  expect(spy).toHaveBeenCalled();
+});
+
+it('textField 요소를 클릭하여 focus가 활성화되면 onFocus prop으로 등록한 함수가 호출된다.', async () => {
+  const spy = vi.fn();
+  const { user } = await render(<TextField onFocus={spy} />);
+  const textInput = screen.getByPlaceholderText('텍스트를 입력해 주세요.');
+
+  await user.click(textInput);
+
+  expect(spy).toHaveBeenCalled();
+});
+
+it('textField 요소를 클릭하여 focus가 활성화되면 border style이 변경된다.', async () => {
+  const { user } = await render(<TextField />);
+  const textInput = screen.getByPlaceholderText('텍스트를 입력해 주세요.');
+
+  await user.click(textInput);
+
+  expect(textInput).toHaveStyle({
+    borderWidth: '2px',
+    borderColor: 'rgb(25, 118, 210)',
+  });
+});
